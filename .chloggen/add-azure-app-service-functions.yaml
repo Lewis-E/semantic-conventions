@@ -1,0 +1,11 @@
+change_type: enhancement
+
+component: azure
+
+note: >
+  Add resource conventions and entities for Azure App Service and Azure
+  Functions, including the `azure.app_service.instance.id` attribute.
+
+issues: [2587]
+
+subtext:

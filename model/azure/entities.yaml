@@ -1,0 +1,71 @@
+groups:
+  - id: entity.azure.app_service
+    type: entity
+    stability: development
+    name: azure.app_service
+    brief: >
+      An Azure App Service app, excluding its deployment slots.
+    attributes:
+      - ref: cloud.resource_id
+        role: identifying
+        requirement_level: required
+        brief: >
+          The fully qualified Azure resource ID of the App Service app.
+        note: >
+          The value MUST have the format
+          `/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Web/sites/{site-name}`.
+          It identifies the parent App Service app, not an individual deployment slot.
+        examples:
+          - "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/my-resource-group/providers/Microsoft.Web/sites/my-app"
+      - ref: cloud.account.id
+        role: descriptive
+        requirement_level: recommended
+      - ref: azure.resource_group.name
+        role: descriptive
+        requirement_level: recommended
+      - ref: cloud.region
+        role: descriptive
+        requirement_level: recommended
+      - ref: service.name
+        role: descriptive
+        requirement_level: recommended
+  - id: entity.azure.app_service.instance
+    type: entity
+    stability: development
+    name: azure.app_service.instance
+    brief: >
+      An instance of an Azure App Service app.
+    attributes:
+      - ref: azure.app_service.instance.id
+        role: identifying
+        requirement_level: required
+  - id: entity.azure.functions
+    type: entity
+    stability: development
+    name: azure.functions
+    brief: >
+      An Azure Functions function app, excluding its deployment slots.
+    attributes:
+      - ref: cloud.resource_id
+        role: identifying
+        requirement_level: recommended
+        brief: >
+          The fully qualified Azure resource ID of the function app.
+        note: >
+          The value SHOULD have the format
+          `/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Web/sites/{site-name}`.
+          It identifies the parent function app, not an individual function or deployment slot.
+        examples:
+          - "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/my-resource-group/providers/Microsoft.Web/sites/my-function-app"
+      - ref: cloud.account.id
+        role: descriptive
+        requirement_level: recommended
+      - ref: azure.resource_group.name
+        role: descriptive
+        requirement_level: recommended
+      - ref: cloud.region
+        role: descriptive
+        requirement_level: recommended
+      - ref: service.name
+        role: descriptive
+        requirement_level: recommended

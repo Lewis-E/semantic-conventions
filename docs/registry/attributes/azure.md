@@ -16,7 +16,10 @@ This section defines generic attributes for Azure services.
 
 | Key | Stability | Value Type | Description | Example Values |
 | --- | --- | --- | --- | --- |
+| <a id="azure-app-service-instance-id" href="#azure-app-service-instance-id">`azure.app_service.instance.id`</a> | ![Development](https://img.shields.io/badge/-development-blue) | string | The unique identifier of an Azure App Service instance. [1] | `a1b2c3d4e5f67890a1b2c3d4e5f67890` |
 | <a id="azure-resource-group-name" href="#azure-resource-group-name">`azure.resource_group.name`</a> | ![Development](https://img.shields.io/badge/-development-blue) | string | The name of the Azure [resource group](https://learn.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal) the resource belongs to. | `my-resource-group`; `rg-myapp-prod` |
+
+**[1] `azure.app_service.instance.id`:** The value SHOULD be set to the [`WEBSITE_INSTANCE_ID`](https://learn.microsoft.com/azure/app-service/reference-app-settings?tabs=kudu%2Cdotnet#app-environment) environment variable.
 
 ## Azure Client Library Attributes
 
@@ -40,12 +43,12 @@ This section defines attributes for Azure Cosmos DB.
 | --- | --- | --- | --- | --- |
 | <a id="azure-cosmosdb-connection-mode" href="#azure-cosmosdb-connection-mode">`azure.cosmosdb.connection.mode`</a> | ![Development](https://img.shields.io/badge/-development-blue) | string | Cosmos client connection mode. | `gateway`; `direct` |
 | <a id="azure-cosmosdb-consistency-level" href="#azure-cosmosdb-consistency-level">`azure.cosmosdb.consistency.level`</a> | ![Development](https://img.shields.io/badge/-development-blue) | string | Account or request [consistency level](https://learn.microsoft.com/azure/cosmos-db/consistency-levels). | `Eventual`; `ConsistentPrefix`; `BoundedStaleness`; `Strong`; `Session` |
-| <a id="azure-cosmosdb-operation-contacted-regions" href="#azure-cosmosdb-operation-contacted-regions">`azure.cosmosdb.operation.contacted_regions`</a> | ![Development](https://img.shields.io/badge/-development-blue) | string[] | List of regions contacted during operation in the order that they were contacted. If there is more than one region listed, it indicates that the operation was performed on multiple regions i.e. cross-regional call. [1] | `["North Central US", "Australia East", "Australia Southeast"]` |
+| <a id="azure-cosmosdb-operation-contacted-regions" href="#azure-cosmosdb-operation-contacted-regions">`azure.cosmosdb.operation.contacted_regions`</a> | ![Development](https://img.shields.io/badge/-development-blue) | string[] | List of regions contacted during operation in the order that they were contacted. If there is more than one region listed, it indicates that the operation was performed on multiple regions i.e. cross-regional call. [2] | `["North Central US", "Australia East", "Australia Southeast"]` |
 | <a id="azure-cosmosdb-operation-request-charge" href="#azure-cosmosdb-operation-request-charge">`azure.cosmosdb.operation.request_charge`</a> | ![Development](https://img.shields.io/badge/-development-blue) | double | The number of request units consumed by the operation. | `46.18`; `1.0` |
 | <a id="azure-cosmosdb-request-body-size" href="#azure-cosmosdb-request-body-size">`azure.cosmosdb.request.body.size`</a> | ![Development](https://img.shields.io/badge/-development-blue) | int | Request payload size in bytes. | |
 | <a id="azure-cosmosdb-response-sub-status-code" href="#azure-cosmosdb-response-sub-status-code">`azure.cosmosdb.response.sub_status_code`</a> | ![Development](https://img.shields.io/badge/-development-blue) | int | Cosmos DB sub status code. | `1000`; `1002` |
 
-**[1] `azure.cosmosdb.operation.contacted_regions`:** Region name matches the format of `displayName` in [Azure Location API](https://learn.microsoft.com/rest/api/resources/subscriptions/list-locations)
+**[2] `azure.cosmosdb.operation.contacted_regions`:** Region name matches the format of `displayName` in [Azure Location API](https://learn.microsoft.com/rest/api/resources/subscriptions/list-locations)
 
 ---
 
